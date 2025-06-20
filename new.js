@@ -1,7 +1,7 @@
 // Select all elements with the class 'box' and the reset button
 let boxes = document.querySelectorAll(".box");
 let reset = document.querySelector(".resetbtn");
-
+let won = document.querySelector(".won");
 // Variable to track the current player's turn (true for 'O', false for 'X')
 let turno = true;
 
@@ -59,8 +59,15 @@ const chechkwinner = () => {
     if (posi0 != "" && posi1 != "" && posi2 != "") {
       if (posi0 === posi1 && posi1 === posi2) {
         // If there's a winner, alert the winner's symbol
-        alert("Winner: " + posi0);
+        won.innerText = `Winner is ${posi0}`;
       }
     }
   }
 };
+
+reset.addEventListener("click", () => {
+  boxes.forEach((box) => {
+    box.innerText = "";
+    box.disabled = false;
+  });
+});
